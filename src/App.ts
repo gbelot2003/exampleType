@@ -1,4 +1,5 @@
 import { Server } from "./config/Server";
+import router from "./routes/register";
 
 const PORT = "3000";
 
