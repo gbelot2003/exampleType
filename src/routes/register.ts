@@ -8,10 +8,8 @@ router.get("/", async (req: Request, res: Response) => {
 
 
 router.post("/", (req: Request, res: Response) => {
-    const body = req.body
-    if(body.firstName === undefined){
-        console.log('is undefined')
-        res.status(400).json({ message: 'User is Created' })
+    if(!req.body.firstName){
+        res.status(400).json({ message: 'You need to pass a first name' })
     }
     res.status(200).json({ message: 'User is Created' })
 })

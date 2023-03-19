@@ -38,7 +38,7 @@ describe("supertest test", () => {
 
             
         expect(res.statusCode).toEqual(400);
-        //expect(res.body).toEqual({ "message": 'You need to pass a first name' })
+        expect(res.body).toEqual({ "message": 'You need to pass a first name' })
     })
 
 })
