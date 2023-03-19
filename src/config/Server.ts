@@ -10,18 +10,26 @@ export class Server {
 
     constructor(port: string) {
         this._app = express()
+        this._port = port
         this.middlewares()
         this.routers()
-        this._port = port
+        
     }
 
     middlewares() {
         this._app.use(bodyParser.json())
         this._app.use(bodyParser.urlencoded({ extended: false }))
         this._app.use(cors())
+        this.listen()
     }
 
     routers() {
         this._app.use(router)
+    }
+
+    listen() {
+        this._app.listen(this._port, () => {
+            console.log(`Servidor corriendo en puerto ${this._port}`)
+        })
     }
 }
