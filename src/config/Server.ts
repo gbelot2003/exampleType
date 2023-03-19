@@ -9,25 +9,24 @@ export class Server {
     private _port: string
 
     constructor(port: string) {
-        this._app = express()
         this._port = port
+        this._app = express()
         this.middlewares()
         this.routers()
-        
     }
 
-    middlewares() {
+    private middlewares() {
         this._app.use(bodyParser.json())
         this._app.use(bodyParser.urlencoded({ extended: false }))
         this._app.use(cors())
         this.listen()
     }
 
-    routers() {
+    private routers() {
         this._app.use(router)
     }
 
-    listen() {
+    private listen() {
         this._app.listen(this._port, () => {
             console.log(`Servidor corriendo en puerto ${this._port}`)
         })
